@@ -61,7 +61,7 @@ body {
   background-color: #ffffff;
 }
 .date {
-  font-size: 45px;
+  font-size: 3rem;
 }
 /* left: 100%; for both the ::before and ::after pseudo-elements, places their left edges to start right where the parent element (calender in your case) ends.  */
 /* left: 100%; tells the browser to place the left edge of the child(both after and before) elements exactly where the right edge of the parent element is. That's why the child element appears to the right of the parent element.  */

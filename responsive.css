@@ -48,10 +48,14 @@
 
   .calender .days .day.active,
   .calender .days .day.today {
-    font-size: 3.5rem;
+    font-size: 2rem;
   }
 
   .right .today-date {
     padding: 20px;
+  }
+
+  .date {
+   font-size: 1.5rem;
   }
 }
