@@ -648,7 +648,11 @@ function saveEventsInStorage() {
 
 function getEventsFromStorage() {
   if (localStorage.getItem("events") !== "[]") {
-    eventArr.push(...JSON.parse(localStorage.getItem("events")));
+    try {
+      eventArr.push(...JSON.parse(localStorage.getItem("events")));
+    } catch (err) {
+      console.log(err.title);
+    }
   } else {
     return;
   }
