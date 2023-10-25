@@ -1,0 +1,57 @@
+@media (max-width: 1000px) {
+  body {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .container {
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  .container .left,
+  .container .right {
+    width: 100%;
+    height: 100%;
+    padding: 20 0;
+  }
+
+  .calender::before,
+  .calender::after {
+    top: 100%;
+    left: 50%;
+    width: 97%;
+    height: 12px;
+    border-radius: 0 0 5px 5px;
+    transform: translateX(-50%);
+  }
+
+  .calender::before {
+    width: 94%;
+    top: calc(100% + 12px);
+  }
+
+  .events {
+    padding-bottom: 340px;
+  }
+  .add-event-wrapper {
+    bottom: 100px;
+  }
+}
+
+@media (max-width: 500px) {
+  .calender .month {
+    height: 75px;
+  }
+
+  .calender .weekdays {
+    height: 50px;
+  }
+
+  .calender .days .day.active,
+  .calender .days .day.today {
+    font-size: 3.5rem;
+  }
+
+  .right .today-date {
+    padding: 20px;
+  }
+}
