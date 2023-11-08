@@ -586,37 +586,46 @@ function convertTime(time) {
 
 eventsContainer.addEventListener("click", (e) => {
   // if clicked in an event inside the event container
+
   if (e.target.classList.contains("event")) {
-    // when clicked in a specific event, the e.target is the div that caontains both the title div and the time div, the title div(children[0]) has an i element and an h3 element inside it, and we are trying to retrieve the h3 element which is the title name
-    const eventTitle = e.target.children[0].children[1].innerHTML;
+    if (window.confirm("Remove this event?")) {
+      // when clicked in a specific event, the e.target is the div that caontains both the title div and the time div, the title div(children[0]) has an i element and an h3 element inside it, and we are trying to retrieve the h3 element which is the title name
+      const eventTitle = e.target.children[0].children[1].innerHTML;
 
-    //after getting the title of event search in array by title and delete
-    eventArr.forEach((event) => {
-      // if when clicked the event date month and year matches
-      if (event.day === activeDay && event.month === month + 1 && event.year) {
-        // then we loop throught all the events in that event object
-        event.events.forEach((item, index) => {
-          // then if the event's title matches with the eventTitle variable we saved before
-          if (item.title === eventTitle) {
-            // then we delete that event
-            event.events.splice(index, 1);
-          }
-        });
-        // Now if the event is now empty as in no events are left, we remove this whole event object
-        if (event.events.length === 0) {
-          eventArr.splice(eventArr.indexOf(event), 1);
-          // after removing the event we remove the active class from that day as well, since this day no longer has any event
+      //after getting the title of event search in array by title and delete
+      eventArr.forEach((event) => {
+        // if when clicked the event date month and year matches
+        if (
+          event.day === activeDay &&
+          event.month === month + 1 &&
+          event.year
+        ) {
+          // then we loop throught all the events in that event object
+          event.events.forEach((item, index) => {
+            // then if the event's title matches with the eventTitle variable we saved before
+            if (item.title === eventTitle) {
+              // then we delete that event
+              event.events.splice(index, 1);
+            }
+          });
+          // Now if the event is now empty as in no events are left, we remove this whole event object
+          if (event.events.length === 0) {
+            eventArr.splice(eventArr.indexOf(event), 1);
+            // after removing the event we remove the active class from that day as well, since this day no longer has any event
 
-          //Without a space: .day.active
-          // This selector targets a single element that has both the class day and the class active simultaneously.
-          const activeDayElem = document.querySelector(".day.active");
-          if (activeDayElem.classList.contains("event")) {
-            activeDayElem.classList.remove("event");
+            //Without a space: .day.active
+            // This selector targets a single element that has both the class day and the class active simultaneously.
+            const activeDayElem = document.querySelector(".day.active");
+            if (activeDayElem.classList.contains("event")) {
+              activeDayElem.classList.remove("event");
+            }
           }
         }
-      }
-    });
-    updateEvents(activeDay);
+      });
+      updateEvents(activeDay);
+    } else {
+      return;
+    }
   }
 });
 
